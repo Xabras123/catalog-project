@@ -1,0 +1,81 @@
+﻿@model IEnumerable<catalog_project.Models.Category>
+
+<div class="container p-1">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="text-primary">Categories</h1>
+        </div>
+
+        <div class="col-6 text-right">
+            <a asp-controller="Category" asp-action="CreateCategory" class="btn btn-primary">
+
+                Create new Category
+            </a>
+
+        </div>
+    </div>
+
+    <br />  <br />
+
+    @if(Model.Count() > 0)
+    {
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Name
+                </th>
+
+                <td>
+                </td>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(var category in Model)
+                {
+            <tr>
+
+                <td width="20%">
+                    @category.id
+                </td>
+
+                <td width="20%">
+                    @category.name
+                </td>
+
+
+
+                <td width="20%">
+
+                    <div class="w-75 btn-group" role="group">
+
+                        <a asp-controller="Category" asp-action="EditCategory" asp-route-id="@category.id" class="btn btn-primary bg-success mx-2">
+                            Edit
+                        </a>
+
+                        <a asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@category.id" class="btn btn-primary bg-danger mx-2">
+                            Dele
+                        </a>
+
+                    </div>
+
+
+
+                </td>
+            </tr>
+                }
+
+        </tbody>
+    </table>
+    }
+    else
+    {
+        <p> Categories doesnt exist in DB</p>
+    }
+
+</div>

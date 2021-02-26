@@ -1,0 +1,39 @@
+﻿@model catalog_project.Models.Product
+
+
+<form method="post" asp-action="DeleteProductPost">
+    <input asp-for="id" hidden />
+    <div class="border p-3">
+
+
+        <div class="form-group text-center" row>
+
+            <h3 class=" pl-0-3">Are You sure You want to delete this item?</h3>
+            <h3 class="text-info pl-0-3">@Model.name</h3>
+        </div>
+
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-6">
+                    <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+                </div>
+                <div class="col-6">
+                    <input type="submit" class="btn btn-danger w-100" value="Delete" />
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-4">
+            @* Keep this empty *@
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+

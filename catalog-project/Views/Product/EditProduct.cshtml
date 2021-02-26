@@ -1,0 +1,94 @@
+﻿@model catalog_project.Models.Product
+
+@{
+    ViewBag.Title = "Create Resource";
+}
+
+<form method="post">
+    <input asp-for="id" hidden />
+    <input asp-for="creationDate" hidden />
+    <div class="border p-3">
+
+        <div class="form-group" row>
+            <h2 class="text-info pl-0-3">
+                Edit Product
+            </h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="name" class="form-control" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="price"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="price" class="form-control" />
+                        <span asp-validation-for="price" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="amount"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="amount" class="form-control" />
+                        <span asp-validation-for="amount" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-4">
+                        <label asp-for="categoryId"></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.categoryId, (SelectList)ViewBag.Types, new
+                                                   {
+                                                       @class = "form-control"
+                                                   })
+
+                        <span asp-validation-for="categoryId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+                        </div>
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-100" value="Update" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+
